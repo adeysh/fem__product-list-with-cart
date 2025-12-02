@@ -8,12 +8,7 @@
 <title>Frontend Mentor | Product list with cart</title>
 
 
-Desserts
 
-Waffle with Berries
-Waffle
-6.50
-Add to Cart
 
 Vanilla Bean Crème Brûlée
 Crème Brûlée
@@ -55,8 +50,6 @@ Panna Cotta
 6.50
 Add to Cart
 
-Your Cart (<!-- Quantity -->)
-Your added items will appear here
 
 <style>
     .attribution { font-size: 11px; text-align: center; }
