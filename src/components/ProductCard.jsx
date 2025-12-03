@@ -3,19 +3,34 @@ import { useCart } from "../hooks/useCart";
 
 const ProductCard = ({ product }) => {
     const { isInCart } = useCart();
-
     const selected = isInCart(product.id);
 
     return (
         <div className="flex flex-col gap-8">
             <div className="relative">
-                <img
-                    src={product.image.mobile}
-                    alt={product.name}
-                    className={`h-auto w-full rounded-xl border-2 object-cover ${
-                        selected ? "border-red" : "border-transparent"
-                    }`}
-                />
+                {/* RESPONSIVE IMAGE */}
+                <picture>
+                    {/* Desktop */}
+                    <source
+                        media="(min-width:1024px)"
+                        srcSet={product.image.desktop}
+                    />
+                    {/* Tablet */}
+                    <source
+                        media="(min-width:640px)"
+                        srcSet={product.image.tablet}
+                    />
+                    {/* Mobile (default) */}
+                    <img
+                        src={product.image.mobile}
+                        alt={product.name}
+                        className={`h-auto w-full rounded-xl border-2 object-cover ${
+                            selected ? "border-red" : "border-transparent"
+                        }`}
+                    />
+                </picture>
+
+                {/* ADD TO CART BUTTON */}
                 <AddToCartButton selected={selected} product={product} />
             </div>
             <div className="flex flex-col gap-1">

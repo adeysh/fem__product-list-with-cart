@@ -55,6 +55,10 @@ export function CartProvider({ children }) {
         return item ? item.quantity : 0;
     }
 
+    function clearCart() {
+        setCart([]);
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -65,6 +69,7 @@ export function CartProvider({ children }) {
                 increaseQty,
                 decreaseQty,
                 getQuantity,
+                clearCart,
             }}
         >
             {children}

@@ -5,10 +5,14 @@ import ProductList from "../components/ProductList";
 
 const ProductsPage = () => {
     return (
-        <main className="flex w-full flex-col gap-8 bg-rose-100 p-6 md:px-0">
-            <Header />
-            <ProductList products={products} />
-            <Cart />
+        <main className="flex w-full max-w-360 flex-col gap-8 bg-rose-100 p-6 lg:flex-row lg:p-24">
+            <div className="flex w-full flex-2 flex-col gap-8">
+                <Header />
+                <ProductList products={products} />
+            </div>
+            <div className="flex w-full flex-1 flex-col">
+                <Cart />
+            </div>
         </main>
     );
 };

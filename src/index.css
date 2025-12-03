@@ -13,12 +13,23 @@
     --color-rose-900: hsl(14, 65%, 9%);
 
     --font-sans: "Red Hat Text", sans-serif;
+
+    --animate-slide-up: slide-up 0.5s ease-out;
+
+    @keyframes slide-up {
+        0% {
+            transform: translateY(100%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
 }
 
 #root {
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
-    background-color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-rose-100);
     min-height: 100vh;
 }
