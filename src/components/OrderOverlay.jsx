@@ -2,6 +2,7 @@ import { useCart } from "../hooks/useCart";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import CartItem from "./CartItem";
 import OrderSummaryItem from "./OrderSummaryItem";
+import PrimaryButton from "./PrimaryButton";
 
 const OrderOverlay = ({ onClose }) => {
     const { cart, clearCart } = useCart();
@@ -38,7 +39,7 @@ const OrderOverlay = ({ onClose }) => {
                     </p>
                 </div>
 
-                <div className="flex flex-col gap-4 rounded-xl bg-rose-100 p-4">
+                <div className="flex flex-col gap-6 rounded-xl bg-rose-100 p-4">
                     <div className="max-h-80 overflow-y-auto pr-2">
                         <ul className="flex flex-col gap-4">
                             {cart.map((item) => (
@@ -60,13 +61,9 @@ const OrderOverlay = ({ onClose }) => {
                         </span>
                     </div>
                 </div>
-                <button
-                    type="button"
-                    onClick={handleStartNewOrder}
-                    className="transition-filter cursor-pointer rounded-full bg-red p-3 text-rose-50 duration-300 hover:bg-red hover:brightness-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 focus-visible:brightness-90"
-                >
+                <PrimaryButton onClick={handleStartNewOrder}>
                     Start New Order
-                </button>
+                </PrimaryButton>
             </div>
         </div>
     );

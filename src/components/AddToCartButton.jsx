@@ -1,4 +1,5 @@
 import { useCart } from "../hooks/useCart";
+import QuantityButton from "./QuantityButton";
 
 const AddToCartButton = ({ selected, product }) => {
     const { addToCart, increaseQty, decreaseQty, getQuantity } = useCart();
@@ -32,41 +33,33 @@ const AddToCartButton = ({ selected, product }) => {
                     : "border-rose-400 bg-rose-50"
             }`}
         >
-            <button
-                className="group flex h-5 w-5 cursor-pointer items-center justify-center rounded-full border border-rose-50 p-0 hover:bg-rose-50 focus:outline-none focus-visible:bg-rose-50"
-                onClick={() => decreaseQty(product.id)}
-            >
+            <QuantityButton onClick={() => decreaseQty(product.id)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="10"
                     height="2"
                     fill="none"
                     viewBox="0 0 10 2"
-                    alt="Decrement Quantity"
                     className="fill-rose-50 transition-colors duration-300 ease-in-out group-hover:fill-red group-focus-visible:fill-red"
                 >
                     <path d="M0 .375h10v1.25H0V.375Z" />
                 </svg>
-            </button>
+            </QuantityButton>
 
             <span className="inline-block w-2 text-center">{quantity}</span>
 
-            <button
-                className="group flex h-5 w-5 cursor-pointer items-center justify-center rounded-full border border-rose-50 p-0 hover:bg-rose-50 focus:outline-none focus-visible:bg-rose-50"
-                onClick={() => increaseQty(product.id)}
-            >
+            <QuantityButton onClick={() => increaseQty(product.id)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="10"
                     height="10"
                     fill="none"
                     viewBox="0 0 10 10"
-                    alt="Increment Quantity"
                     className="fill-rose-50 transition-colors duration-300 ease-in-out group-hover:fill-red group-focus-visible:fill-red"
                 >
                     <path d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z" />
                 </svg>
-            </button>
+            </QuantityButton>
         </div>
     );
 };
