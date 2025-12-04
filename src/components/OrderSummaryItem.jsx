@@ -15,7 +15,9 @@ const OrderSummaryItem = ({ item }) => {
                 />
 
                 <div className="flex flex-col justify-between gap-2">
-                    <p className="max-w-[140px] truncate font-semibold whitespace-nowrap text-rose-900">
+                    <p
+                        className={`truncate font-semibold whitespace-nowrap text-rose-900 ${isLargeScreen ? "" : "max-w-item-name"}`}
+                    >
                         {item.name}
                     </p>
 

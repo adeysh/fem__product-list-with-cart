@@ -1,13 +1,19 @@
 import { useCart } from "../hooks/useCart";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const CartItem = ({ item }) => {
     const { removeFromCart } = useCart();
+    const isLargeScreen = useMediaQuery("(width >= 64rem)");
 
     return (
         <div className="flex w-full items-center justify-between">
             {/* Left NAME + QTY */}
             <div className="flex flex-col gap-2">
-                <p className="font-semibold text-rose-900">{item.name}</p>
+                <p
+                    className={`truncate font-semibold whitespace-nowrap text-rose-900 ${isLargeScreen ? "" : "max-w-item-name"}`}
+                >
+                    {item.name}
+                </p>
 
                 <div className="flex items-center gap-4 text-sm">
                     <span className="font-semibold text-red">

@@ -24,6 +24,8 @@
             transform: translateY(0);
         }
     }
+
+    --container-item-name: clamp(8.75rem, 1.875rem + 34.375vw, 15.625rem);
 }
 
 #root {
@@ -33,3 +35,5 @@
     background-color: var(--color-rose-100);
     min-height: 100vh;
 }
+
+@tailwind utilities;
