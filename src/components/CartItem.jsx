@@ -32,7 +32,7 @@ const CartItem = ({ item }) => {
             <button
                 type="button"
                 onClick={() => removeFromCart(item.id)}
-                className="group cursor-pointer rounded-full border-2 border-rose-300 p-0.5 hover:border-rose-900"
+                className="group cursor-pointer rounded-full border-2 border-rose-300 p-0.5 hover:border-rose-900 focus:outline-none focus-visible:border-rose-900"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ const CartItem = ({ item }) => {
                     fill="none"
                     viewBox="0 0 10 10"
                     alt="Remove"
-                    className="fill-rose-300 transition-colors duration-300 ease-in-out group-hover:fill-rose-900"
+                    className="fill-rose-300 transition-colors duration-300 ease-in-out group-hover:fill-rose-900 group-focus-visible:fill-rose-900"
                 >
                     <path d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z" />
                 </svg>
