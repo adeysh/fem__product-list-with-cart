@@ -1,6 +1,5 @@
 import { useCart } from "../hooks/useCart";
 import { useMediaQuery } from "../hooks/useMediaQuery";
-import CartItem from "./CartItem";
 import OrderSummaryItem from "./OrderSummaryItem";
 import PrimaryButton from "./PrimaryButton";
 
@@ -19,17 +18,23 @@ const OrderOverlay = ({ onClose }) => {
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex bg-rose-500/50 backdrop-blur-[2px] ${isLargeScreen ? "items-center justify-center" : ""}`}
+            className={`fixed inset-0 z-50 flex bg-rose-500/50 backdrop-blur-[2px] ${isLargeScreen ? "items-center justify-center" : ""} `}
         >
             <div
-                className={`flex animate-slide-up flex-col gap-8 overflow-auto bg-rose-50 shadow-2xl ${isLargeScreen ? "mt-0 rounded-xl p-10" : "mt-22 w-full rounded-t-xl p-6"}`}
+                className={`flex animate-slide-up flex-col gap-8 overflow-auto bg-rose-50 shadow-2xl ${
+                    isLargeScreen
+                        ? "rounded-xl p-10"
+                        : "mt-22 w-full rounded-t-xl p-6"
+                }`}
             >
-                <div>
-                    <img
-                        src="/assets/images/icon-order-confirmed.svg"
-                        alt="Confirmed"
-                    />
-                </div>
+                {/* Success Icon */}
+                <img
+                    src="/assets/images/icon-order-confirmed.svg"
+                    alt="Order confirmed"
+                    className="w-fit"
+                />
+
+                {/* Header */}
                 <div className="flex flex-col gap-2">
                     <h2 className="text-4xl font-bold text-rose-900">
                         Order Confirmed
@@ -39,6 +44,7 @@ const OrderOverlay = ({ onClose }) => {
                     </p>
                 </div>
 
+                {/* Order Summary */}
                 <div className="flex flex-col gap-6 rounded-xl bg-rose-100 p-4">
                     <div className="max-h-80 overflow-y-auto pr-2">
                         <ul className="flex flex-col gap-4">
@@ -52,6 +58,8 @@ const OrderOverlay = ({ onClose }) => {
                             ))}
                         </ul>
                     </div>
+
+                    {/* Total */}
                     <div className="flex items-center justify-between">
                         <span className="text-sm font-semibold text-rose-500">
                             Order Total
@@ -61,6 +69,8 @@ const OrderOverlay = ({ onClose }) => {
                         </span>
                     </div>
                 </div>
+
+                {/* Action Button */}
                 <PrimaryButton onClick={handleStartNewOrder}>
                     Start New Order
                 </PrimaryButton>

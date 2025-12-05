@@ -12,19 +12,20 @@ const ProductCard = ({ product }) => {
                 <picture>
                     {/* Desktop */}
                     <source
-                        media="(min-width:1024px)"
+                        media="(width >= 64rem)"
                         srcSet={product.image.desktop}
                     />
                     {/* Tablet */}
                     <source
-                        media="(min-width:640px)"
+                        media="(width >= 40rem)"
                         srcSet={product.image.tablet}
                     />
                     {/* Mobile (default) */}
                     <img
                         src={product.image.mobile}
                         alt={product.name}
-                        className={`h-auto w-full rounded-xl border-2 object-cover ${
+                        loading="lazy"
+                        className={`h-auto w-full rounded-xl border-2 object-cover transition-colors duration-300 ${
                             selected ? "border-red" : "border-transparent"
                         }`}
                     />
@@ -33,6 +34,8 @@ const ProductCard = ({ product }) => {
                 {/* ADD TO CART BUTTON */}
                 <AddToCartButton selected={selected} product={product} />
             </div>
+
+            {/* PRODUCT INFO */}
             <div className="flex flex-col gap-1">
                 <p className="font-sem text-sm text-rose-400">
                     {product.category}

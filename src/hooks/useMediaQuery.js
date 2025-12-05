@@ -1,20 +1,26 @@
 import { useState, useEffect } from "react";
 
+/* Custom hook to track a CSS media query */
 export function useMediaQuery(query) {
     const [matches, setMatches] = useState(() => {
-        if (typeof window !== "undefined") {
-            return window.matchMedia(query).matches;
-        }
-        return false;
+        if (typeof window === "undefined") return false;
+        return window.matchMedia(query).matches;
     });
 
     useEffect(() => {
-        const media = window.matchMedia(query);
-        const listener = () => setMatches(media.matches);
+        if (typeof window === "undefined") return;
 
-        media.addEventListener("change", listener);
+        const mediaQueryList = window.matchMedia(query);
 
-        return () => media.removeEventListener("change", listener);
+        const handleChange = (event) => {
+            setMatches(event.matches);
+        };
+
+        mediaQueryList.addEventListener("change", handleChange);
+
+        return () => {
+            mediaQueryList.removeEventListener("change", handleChange);
+        };
     }, [query]);
 
     return matches;

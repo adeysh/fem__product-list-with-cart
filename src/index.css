@@ -1,10 +1,14 @@
+/* Red Hat Text Font */
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+
 @import "tailwindcss";
 
 @theme {
+    /* Accent Colors */
     --color-red: hsl(14, 86%, 42%);
     --color-green: hsl(159, 69%, 38%);
 
+    /* Neutral Rose Palette */
     --color-rose-50: hsl(20, 50%, 98%);
     --color-rose-100: hsl(13, 31%, 94%);
     --color-rose-300: hsl(14, 25%, 72%);
@@ -12,28 +16,43 @@
     --color-rose-500: hsl(12, 20%, 44%);
     --color-rose-900: hsl(14, 65%, 9%);
 
+    /* Typography */
     --font-sans: "Red Hat Text", sans-serif;
 
+    /* Animations */
     --animate-slide-up: slide-up 0.5s ease-out;
 
     @keyframes slide-up {
-        0% {
+        from {
             transform: translateY(100%);
         }
-        100% {
+        to {
             transform: translateY(0);
         }
     }
 
+    /* clamp token for long item names */
     --container-item-name: clamp(8.75rem, 1.875rem + 34.375vw, 15.625rem);
 }
 
+/* Root container styles
+Keep layout centered on all screen sizes */
 #root {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-rose-100);
     min-height: 100vh;
+    background-color: var(--color-rose-100);
 }
 
 @tailwind utilities;
+
+@layer utilities {
+    .add-to-cart-ui {
+        @apply absolute -bottom-5 left-1/2 flex -translate-x-1/2 rounded-full border border-solid font-semibold whitespace-nowrap;
+    }
+
+    .qty-icon {
+        @apply fill-rose-50 transition-colors duration-300 ease-in-out group-hover:fill-red group-focus-visible:fill-red;
+    }
+}

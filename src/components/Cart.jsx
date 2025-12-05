@@ -27,17 +27,14 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        if (showOverlay) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
+        document.body.style.overflow = showOverlay ? "hidden" : "auto";
 
         return () => {
             document.body.style.overflow = "auto";
         };
     }, [showOverlay]);
 
+    // Empty Cart UI
     if (cart.length === 0) {
         return (
             <section className="flex flex-col gap-8 rounded-xl bg-rose-50 p-8">
@@ -57,12 +54,14 @@ const Cart = () => {
 
     return (
         <>
+            {/* CART PANEL */}
             <section className="flex flex-col gap-4 rounded-xl bg-rose-50 p-6">
                 <h2 className="text-2xl font-bold text-red">
                     Your Cart ({totalQty})
                 </h2>
 
-                <ul className="flex flex-col gap-0">
+                {/* CART ITEMS */}
+                <ul className="flex flex-col">
                     {cart.map((item) => (
                         <li
                             key={item.id}
@@ -73,6 +72,7 @@ const Cart = () => {
                     ))}
                 </ul>
 
+                {/* TOTAL PRICE */}
                 <div className="flex items-center justify-between">
                     <span className="text-sm font-semibold text-rose-500">
                         Order Total
@@ -81,6 +81,8 @@ const Cart = () => {
                         ${totalPrice}
                     </span>
                 </div>
+
+                {/* CARBON NOTICE */}
                 <div className="flex items-center justify-center gap-2 rounded-xl bg-rose-100 p-4">
                     <img
                         src="/assets/images/icon-carbon-neutral.svg"
@@ -92,11 +94,13 @@ const Cart = () => {
                         delivery
                     </p>
                 </div>
+
                 <PrimaryButton onClick={handleConfirm}>
                     Confirm Order
                 </PrimaryButton>
             </section>
 
+            {/* ORDER OVERLAY */}
             {showOverlay && (
                 <OrderOverlay onClose={() => setShowOverlay(false)} />
             )}
