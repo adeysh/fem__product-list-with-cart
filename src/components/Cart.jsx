@@ -26,11 +26,12 @@ const Cart = () => {
         }
     }
 
+    // No scrolling after opening overlay
     useEffect(() => {
-        document.body.style.overflow = showOverlay ? "hidden" : "auto";
+        document.body.classList.toggle("no-scroll", showOverlay);
 
         return () => {
-            document.body.style.overflow = "auto";
+            document.body.classList.remove("no-scroll");
         };
     }, [showOverlay]);
 
